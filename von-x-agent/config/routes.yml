@@ -72,7 +72,67 @@ forms:
         - name: entity_name_effective
           from: helper
           source: now_iso
+          
+  cannabis-retail-store-licence-reg:
+    path: /myorg/retailstorelicence
+    type: issue-credential
+    schema_name: cannabis-retail-store-licence.ag.gov.bc.ca
+    page_title: Liquor & Cannabis Regulation Branch
+    title: Cannabis Retail Store Licence
+    template: bcgov.index.html
+    description: >
+      Insert description here
+    explanation: Use the form below to register a Cannabis Retail Store Licence.
 
+    js_includes:
+      - src: js/bc_registries.js
+
+    proof_request:
+      id: registration
+      connection_id: bctob  
+      
+    fields:
+    
+      - name: registration_id
+        label: Registration ID
+        type: text
+        required: true
+
+      - name: legal_name
+        label: Legal Name
+        type: text
+        required: true
+      
+      - name: licence_number
+        label: Licence number
+        type: text
+        required: true
+      
+      - name: licence_issue_date
+        label: Issue Date
+        type: date
+        required: true
+      
+      - name: licence_expiry_date
+        label: Expiry Date
+        type: date
+        required: true
+        
+      - name: establishment_name
+        label: Establishment Name
+        type: text
+        required: true
+      
+      - name: address
+        label: Physical Address
+        type: address
+        required: true
+       
+      - name: terms_and_conditions
+        label: Terms and conditions
+        type: text
+        required: true      
+    
   finance-tax:
     path: /myorg/tax
     type: issue-credential

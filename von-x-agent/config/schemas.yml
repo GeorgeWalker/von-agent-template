@@ -90,3 +90,38 @@
       description: Date Credential expires (typically same as next version of credential is issued)
       required: N
 
+- name: cannabis-retail-store-licence.ag.gov.bc.ca
+  version: '1.0.0'
+  attributes:
+    registration_id:
+      description: Incorporation ID
+      required: Y
+    licence_number:
+      description: Licence number as issued by the system for the retail store licence
+      required: Y
+    licence_issue_date:
+      required: Y
+    licence_expiry_date:
+      description: Date Licence expires (typically one year from the day it was issued)
+      required: Y
+    establishment_name:
+      description: Name of the Establishment
+    address_line_1:      
+      required: Y
+    address_line_2:
+      required: Y
+    addressee:
+      required: Y
+    city:
+      required: Y
+    country:
+      required: Y
+    legal_name:
+      required: Y
+    postal_code:
+      required: Y
+    province:
+      required: Y
+    terms_and_conditions:
+      required: Y
+     

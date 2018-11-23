@@ -1,8 +1,8 @@
 issuers:
   myorg:
-    name: My Test Organization
-    abbreviation: myorg
-    url: https://www2.gov.bc.ca/gov/TBD
+    name: Liquor & Cannabis Regulation Branch
+    abbreviation: LCRB
+    url: https://www2.gov.bc.ca/gov/content/employment-business/business/liquor-regulation-licensing
     email: TBD@gov.bc.ca
     logo_path: ../assets/img/tbd-logo-square.jpg
     endpoint: http://$APPLICATION_URL/
@@ -328,7 +328,91 @@ issuers:
               value:
                 input: expiry_date
                 from: claim
-
+                
+      - description: Cannabis Retail Store Licence
+        schema: cannabis-retail-store-licence.ag.gov.bc.ca
+        issuer_url: $APPLICATION_URL_VONX
+        depends_on:
+          - registration
+        credential:
+          effective_date:
+            input: licence_issue_date
+            from: claim          
+        topic:
+          source_id:
+            input: registration_id
+            from: claim
+          type:
+            input: registration
+            from: value
+        mapping:
+          - model: address
+            fields:
+              addressee:
+                input: addressee
+                from: claim
+              civic_address:
+                input: address_line_1
+                from: claim
+              city:
+                input: city
+                from: claim
+              province:
+                input: province
+                from: claim
+              postal_code:
+                input: postal_code
+                from: claim
+              country:
+                input: country
+                from: claim
+          - model: attribute
+            fields:
+              type:
+                input: licence_number
+                from: value    
+              value:
+                input: licence_number
+                from: claim
+          - model: attribute
+            fields:
+              type:
+                input: licence_issue_date
+                from: value
+              format:
+                input: datetime
+                from: value 
+              value:
+                input: licence_issue_date
+                from: claim
+          - model: attribute
+            fields:
+              type:
+                input: licence_expiry_date
+                from: value
+              format:
+                input: datetime
+                from: value 
+              value:
+                input: licence_expiry_date
+                from: claim
+          - model: attribute
+            fields:
+              type:
+                input: establishment_name
+                from: value              
+              value:
+                input: establishment_name
+                from: claim
+          - model: attribute
+            fields:
+              type:
+                input: terms_and_conditions
+                from: value              
+              value:
+                input: terms_and_conditions
+                from: claim          
+      
 verifiers:
   bctob:
     name: BC OrgBook
